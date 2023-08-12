@@ -8,21 +8,18 @@ public class Enemy : MonoBehaviour
     protected Rigidbody enemyRb;
     protected GameObject playerGoal;
 
-    //ABSTRACTION
+    //POLYMORPHISM
     public virtual void Attack()
     {
         Vector3 lookDirection = (playerGoal.transform.position - transform.position).normalized;
         enemyRb.AddForce(lookDirection * speed * Time.deltaTime);
     }
 
-
     // Start is called before the first frame update
     public void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
         playerGoal = GameObject.Find("Target");
-        
-
     }
 
     // Update is called once per frame
@@ -31,24 +28,17 @@ public class Enemy : MonoBehaviour
      Attack();
     }
 
-    
-
     public void OnCollisionEnter(Collision other)
     {
-        // If enemy collides with either goal, destroy it
         if (other.gameObject.name == "Target")
         {
             Destroy(gameObject);
             Debug.Log("Game Over");
         } 
-
-
     }
 
     private void OnMouseDown()
     {
-            Destroy(gameObject);
-               
+            Destroy(gameObject);        
     }
-
 }

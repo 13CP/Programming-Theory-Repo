@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject[] ballPrefabs;
-
     private float spawnLimitXLeft = -1;
     private float spawnLimitXRight = 3;
     private float spawnLimitZTop = 1;
@@ -17,12 +16,9 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         InvokeRepeating("SpawnRandomBall", startDelay, spawnInterval);
     }
 
-    // Spawn random ball at random x position at top of play area
-    
     // ABSTRACTION
     void SpawnRandomBall ()
     {
@@ -31,5 +27,4 @@ public class SpawnManager : MonoBehaviour
         Vector3 spawnPos = new Vector3(Random.Range(spawnLimitXLeft, spawnLimitXRight), spawnLimitY, Random.Range(spawnLimitZTop, spawnLimitZBottom));
         Instantiate(ballPrefabs[ballIndex], spawnPos, ballPrefabs[ballIndex].transform.rotation);
     }
-
 }

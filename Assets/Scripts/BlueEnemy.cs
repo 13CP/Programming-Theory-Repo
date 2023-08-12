@@ -8,16 +8,13 @@ public class BlueEnemy : Enemy
     // ENCAPSULATION
     public static Vector3 scaleChange { get; private set;}
     
-    //POLYMORPHISME
+    //POLYMORPHISM
     public override void Attack()
     { 
         speed = -25f;
         Vector3 lookDirection = (playerGoal.transform.position - transform.position).normalized;
-        enemyRb.AddForce(lookDirection *speed * Time.deltaTime);
-        
+        enemyRb.AddForce(lookDirection *speed * Time.deltaTime); 
     }
-
-    
 
     // Update is called once per frame
     public override void Update()
@@ -26,8 +23,4 @@ public class BlueEnemy : Enemy
         transform.localScale += scaleChange * Time.deltaTime;
         Attack();
     }
-
-    
-
-
 }
